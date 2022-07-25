@@ -1,0 +1,75 @@
+{
+  "_args": [
+    [
+      "circomlib@0.0.5",
+      "/home/iskander/Projects/zku-projects/zkmm"
+    ]
+  ],
+  "_from": "circomlib@0.0.5",
+  "_id": "circomlib@0.0.5",
+  "_inBundle": false,
+  "_integrity": "sha512-vFhrzoH4ATuCgQ+NGMvvgDcV3Owl3aR00hC4ltym0f1o5Rl6INe0JmFUipx9EPTcoFx6QkMqKCvJEFb1IGaniQ==",
+  "_location": "/circomlib",
+  "_phantomChildren": {
+    "chai": "4.2.0",
+    "eslint": "5.9.0",
+    "yargs": "12.0.2"
+  },
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "circomlib@0.0.5",
+    "name": "circomlib",
+    "escapedName": "circomlib",
+    "rawSpec": "0.0.5",
+    "saveSpec": null,
+    "fetchSpec": "0.0.5"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/circomlib/-/circomlib-0.0.5.tgz",
+  "_spec": "0.0.5",
+  "_where": "/home/iskander/Projects/zku-projects/zkmm",
+  "author": {
+    "name": "0Kims"
+  },
+  "bugs": {
+    "url": "https://github.com/iden3/circomlib/issues"
+  },
+  "dependencies": {
+    "blake-hash": "^1.1.0",
+    "snarkjs": "0.1.9",
+    "web3": "^1.0.0-beta.36"
+  },
+  "description": "Basic circuits library for Circom",
+  "devDependencies": {
+    "circom": "0.0.24",
+    "eslint-plugin-mocha": "^5.2.0",
+    "ganache-cli": "^6.2.3",
+    "mocha": "^5.2.0"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "homepage": "https://github.com/iden3/circomlib#readme",
+  "keywords": [
+    "pedersen",
+    "hash",
+    "ethereum",
+    "circuit",
+    "circom",
+    "zksnark"
+  ],
+  "license": "GPL-3.0",
+  "main": "index.js",
+  "name": "circomlib",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iden3/circomlib.git"
+  },
+  "scripts": {
+    "test": "mocha --max-old-space-size=4000"
+  },
+  "version": "0.0.5"
+}
