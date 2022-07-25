@@ -64,16 +64,19 @@ template MastermindVariation() {
         }
     }
 
+    signal blacks <-- nb;
+    signal whites <-- nw;
+    
     // Create a constraint around the number of hit
     component equalBlack = IsEqual();
     equalBlack.in[0] <== pubNumBlacks;
-    equalBlack.in[1] <== nb;
+    equalBlack.in[1] <== blacks;
     equalBlack.out === 1;
     
     // Create a constraint around the number of blow
     component equalWhite = IsEqual();
     equalWhite.in[0] <== pubNumWhites;
-    equalWhite.in[1] <== nw;
+    equalWhite.in[1] <== whites;
     equalWhite.out === 1;
 
     // Verify the hash of the private solution if matches
