@@ -1,16 +1,8 @@
-import { bigInt } from "../snarkjs/index.js";
-import { buildPedersenHash as pedersen } from "../circomlibjs/main.js";
-import { buildBabyjub as babyJub } from "../circomlibjs/main.js";
-// const pedersen = require("../node_modules/circomlib/src/pedersenHash.js");
-// const babyJub = require("../node_modules/circomlib/src/babyjub.js");
+const { bigInt } = require("../snarkjs/index.js");
+const pedersen = require("circomlibjs").buildPedersenHash;
+const babyJub = require("circomlibjs").buildBabyjub;
 
-interface IPedersenHash {
-  encodedHash: bigInt;
-  babyJubX: bigInt;
-  babyJubY: bigInt;
-}
-
-const pedersenHash = (val: bigInt): IPedersenHash => {
+const pedersenHash = (val) => {
   const buff = bigInt.leInt2Buff(val, 32);
   const hashed = pedersen.hash(buff);
   const hashAsInt = bigInt.leBuff2int(hashed);
@@ -24,11 +16,11 @@ const pedersenHash = (val: bigInt): IPedersenHash => {
   };
 };
 
-const pedersenHashDouble = (a: bigInt, b: bigInt): IPedersenHash => {
+const pedersenHashDouble = (a, b) => {
   return pedersenHash(joinEncodedHashes(a, b));
 };
 
-const joinEncodedHashes = (a: bigInt, b: bigInt): bigInt => {
+const joinEncodedHashes = (a, b) => {
   const bufA = bigInt.leInt2Buff(a, 32);
   const bufB = bigInt.leInt2Buff(b, 32);
   const resultBuf = Buffer.alloc(32);
@@ -43,7 +35,7 @@ const joinEncodedHashes = (a: bigInt, b: bigInt): bigInt => {
   return result;
 };
 
-const encodePedersen = (unpackedPoint: bigInt[]): bigInt => {
+const encodePedersen = (unpackedPoint) => {
   const xBuff = bigInt.leInt2Buff(unpackedPoint[0], 32);
   const yBuff = bigInt.leInt2Buff(unpackedPoint[1], 32);
 
@@ -57,10 +49,15 @@ const encodePedersen = (unpackedPoint: bigInt[]): bigInt => {
   return bigInt.leBuff2int(result, 32);
 };
 
-// if (require.main === module) {
-//   const input = bigInt(process.argv[2]);
-//   const hash = pedersenHash(input).encodedHash.toString();
-//   console.log(hash);
-// }
+if (require.main === module) {
+  const input = bigInt(process.argv[2]);
+  const hash = pedersenHash(input).encodedHash.toString();
+  console.log(hash);
+}
 
-export { pedersenHash, pedersenHashDouble, encodePedersen, joinEncodedHashes };
+module.exports = {
+  pedersenHash,
+  pedersenHashDouble,
+  encodePedersen,
+  joinEncodedHashes,
+};
